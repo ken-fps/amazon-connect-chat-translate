@@ -8,7 +8,7 @@
             },
             {
                 "key": "Content-Security-Policy",
-                "value": "frame-ancestors https://fps-demo-connect.my.connect.aws"
+                "value": "frame-ancestors https://fps-demo-connect.my.connect.aws/agent-app-v2?referrer=admin"
             }
         ]
     }
