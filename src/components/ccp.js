@@ -193,12 +193,22 @@ const Ccp = () => {
         window.connect.agentApp.initApp(
             "ccp",
             "ccp-container",
-            connectUrl + "/ccp-v2/", {
+            connectUrl + "/connect/ccp-v2/", {
             ccpParams: {
                 region: process.env.REACT_APP_CONNECT_REGION,
                 pageOptions: {                  // optional
                     enableAudioDeviceSettings: true, // optional, defaults to 'false'
                     enablePhoneTypeSettings: true // optional, defaults to 'true'
+                },
+                iframe: {
+                    sandboxPermissions: [
+                        'allow-scripts',
+                        'allow-same-origin',
+                        'allow-forms',
+                        'allow-popups',
+                        'allow-popups-to-escape-sandbox',
+                        'allow-presentation'
+                    ]
                 }
             }
         }
