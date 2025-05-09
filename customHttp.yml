@@ -2,7 +2,7 @@ customHeaders:
   - pattern: "**/*"
     headers:
       - key: Content-Security-Policy
-        value: frame-ancestors  https://fps-demo-connect.my.connect.aws
+        value: child-src https://fps-demo-connect.my.connect.aws; frame-src https://fps-demo-connect.my.connect.aws;
       - key: Access-Control-Allow-Methods
         value: GET, POST, OPTIONS
       - key: Access-Control-Allow-Headers
