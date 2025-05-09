@@ -187,14 +187,13 @@ const Ccp = () => {
 
     // ***** 
     // Loading CCP
-    // *****
-    useEffect(() => {
+    function waitForCCPContainerAndInit(retries = 10, delay = 500) {
         const connectUrl = process.env.REACT_APP_CONNECT_INSTANCE_URL;
-        const container = document.getElementById('agent-app-container');
+        const container = document.getElementById('ccp-container');
         if (container) {
             window.connect.agentApp.initCCP(
                 "ccp",
-                "agent-app-container",
+                "ccp-container",
                 connectUrl + "/connect/ccp-v2/", {
                 ccpParams: {
                     region: process.env.REACT_APP_CONNECT_REGION,
@@ -219,7 +218,16 @@ const Ccp = () => {
                 }
             }
             );
+        } else if (retries > 0) {
+            console.log(`⏳ CCP container not found, retrying in ${delay}ms...`);
+            setTimeout(() => waitForCCPContainerAndInit(retries - 1, delay), delay);
+        } else {
+            console.error('❌ Failed to initialize CCP: container not found.');
         }
+    }
+    // *****
+    useEffect(() => {
+        waitForCCPContainerAndInit()
         subscribeConnectEvents();
     }, []);
 
