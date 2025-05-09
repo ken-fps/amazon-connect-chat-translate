@@ -191,7 +191,7 @@ const Ccp = () => {
     useEffect(() => {
         const connectUrl = process.env.REACT_APP_CONNECT_INSTANCE_URL;
         window.connect.agentApp.initApp({
-            containerId: 'ccp-container', // Parent page element ID
+            containerId: 'agent-app-container', // Parent page element ID
             url: connectUrl + "/connect/ccp-v2/", // CCP endpoint
             loginPopup: true,
             loginPopupAutoClose: true,
