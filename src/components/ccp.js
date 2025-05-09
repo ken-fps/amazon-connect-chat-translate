@@ -190,33 +190,36 @@ const Ccp = () => {
     // *****
     useEffect(() => {
         const connectUrl = process.env.REACT_APP_CONNECT_INSTANCE_URL;
-        window.connect.agentApp.initApp(
-            "ccp",
-            "agent-app-container",
-            connectUrl + "/connect/ccp-v2/", {
-            ccpParams: {
-                region: process.env.REACT_APP_CONNECT_REGION,
-                pageOptions: {                  // optional
-                    enableAudioDeviceSettings: true, // optional, defaults to 'false'
-                    enablePhoneTypeSettings: true // optional, defaults to 'true'
-                },
-                loginPopup: true,
-                loginPopupAutoClose: true,
-                softphone: {
-                    allowFramedSoftphone: true,
-                },
-                instanceId: "fps-demo-connect",
-                iframe: {
-                    sandboxPermissions: [
-                        'allow-scripts',
-                        'allow-same-origin',
-                        'allow-forms',
-                        'allow-popups',
-                    ]
-                },
+        const container = document.getElementById('agent-app-container');
+        if (container) {
+            window.connect.agentApp.initApp(
+                "ccp",
+                "agent-app-container",
+                connectUrl + "/connect/ccp-v2/", {
+                ccpParams: {
+                    region: process.env.REACT_APP_CONNECT_REGION,
+                    pageOptions: {                  // optional
+                        enableAudioDeviceSettings: true, // optional, defaults to 'false'
+                        enablePhoneTypeSettings: true // optional, defaults to 'true'
+                    },
+                    loginPopup: true,
+                    loginPopupAutoClose: true,
+                    softphone: {
+                        allowFramedSoftphone: true,
+                    },
+                    instanceId: "fps-demo-connect",
+                    iframe: {
+                        sandboxPermissions: [
+                            'allow-scripts',
+                            'allow-same-origin',
+                            'allow-forms',
+                            'allow-popups',
+                        ]
+                    },
+                }
             }
+            );
         }
-        );
         subscribeConnectEvents();
     }, []);
 
