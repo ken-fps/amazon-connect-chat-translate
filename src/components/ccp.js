@@ -189,7 +189,7 @@ const Ccp = () => {
     // Loading CCP
     function waitForCCPContainerAndInit(retries = 10, delay = 500) {
         const connectUrl = process.env.REACT_APP_CONNECT_INSTANCE_URL;
-        const container = document.getElementById('ccp-container');
+        const container = window.parent.document.getElementById('ccp-container');
         if (container) {
             window.connect.agentApp.initApp(
                 'ccp',
