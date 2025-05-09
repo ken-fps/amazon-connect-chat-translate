@@ -3,8 +3,6 @@ customHeaders:
     headers:
       - key: Content-Security-Policy
         value: "default-src 'self';  frame-src https://fps-demo-connect.my.connect.aws; connect-src https://fps-demo-connect.my.connect.aws https://*.amazonaws.com;  script-src 'self' https://fps-demo-connect.my.connect.aws 'unsafe-inline';  style-src 'self' 'unsafe-inline';  img-src 'self' data:;  media-src 'self' blob:;"
-      - key: X-Frame-Options
-        value: ALLOW-FROM https://fps-demo-connect.my.connect.aws
       - key: Access-Control-Allow-Methods
         value: GET, POST, OPTIONS
       - key: Access-Control-Allow-Headers
