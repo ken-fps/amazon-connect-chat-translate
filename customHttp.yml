@@ -6,7 +6,7 @@ customHeaders:
       - key: X-Frame-Options
         value: ALLOW-FROM "*"
       - key: Access-Control-Allow-Origin
-        value: https://main.dxsjjqtbt8j3j.amplifyapp.com
+        value: https://fps-demo-connect.my.connect.aws
       - key: Access-Control-Allow-Credentials
         value: true
       - key: Access-Control-Allow-Methods
