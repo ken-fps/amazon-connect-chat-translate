@@ -187,47 +187,22 @@ const Ccp = () => {
 
     // ***** 
     // Loading CCP
-    function waitForCCPContainerAndInit(retries = 10, delay = 500) {
-        const connectUrl = process.env.REACT_APP_CONNECT_INSTANCE_URL;
-        const container = window.parent.document.getElementById('ccp-container');
-        if (container) {
-            window.connect.agentApp.initApp(
-                'ccp',
-                'ccp-container',
-                connectUrl + "/connect/ccp-v2/", {
-                ccpParams: {
-                    region: process.env.REACT_APP_CONNECT_REGION,
-                    pageOptions: {                  // optional
-                        enableAudioDeviceSettings: true, // optional, defaults to 'false'
-                        enablePhoneTypeSettings: true // optional, defaults to 'true'
-                    },
-                    loginPopup: true,
-                    loginPopupAutoClose: true,
-                    softphone: {
-                        allowFramedSoftphone: true,
-                    },
-                    instanceId: "fps-demo-connect",
-                    iframe: {
-                        sandboxPermissions: [
-                            'allow-scripts',
-                            'allow-same-origin',
-                            'allow-forms',
-                            'allow-popups',
-                        ]
-                    },
-                }
-            }
-            );
-        } else if (retries > 0) {
-            console.log(`⏳ CCP container not found, retrying in ${delay}ms...`);
-            setTimeout(() => waitForCCPContainerAndInit(retries - 1, delay), delay);
-        } else {
-            console.error('❌ Failed to initialize CCP: container not found.');
-        }
-    }
     // *****
     useEffect(() => {
-        waitForCCPContainerAndInit()
+        const connectUrl = process.env.REACT_APP_CONNECT_INSTANCE_URL;
+        window.connect.agentApp.initApp(
+            "ccp",
+            "ccp-container",
+            connectUrl + "/connect/ccp-v2/", {
+            ccpParams: {
+                region: process.env.REACT_APP_CONNECT_REGION,
+                pageOptions: {                  // optional
+                    enableAudioDeviceSettings: true, // optional, defaults to 'false'
+                    enablePhoneTypeSettings: true // optional, defaults to 'true'
+                }
+            }
+        }
+        );
         subscribeConnectEvents();
     }, []);
 
@@ -237,7 +212,7 @@ const Ccp = () => {
             <Grid columns='equal' stackable padded>
                 <Grid.Row>
                     {/* CCP window will load here */}
-                    {/* <div id="ccp-container"></div> */}
+                    <div id="ccp-container"></div>
                     {/* Translate window will laod here. We pass the agent state to be able to use this to push messages to CCP */}
                     <div id="chatroom" ><Chatroom session={agentChatSessionState} /> </div>
                 </Grid.Row>
