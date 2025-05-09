@@ -1,4 +1,4 @@
-import  { Predictions} from '@aws-amplify/predictions';
+import { Predictions } from '@aws-amplify/predictions';
 
 
 
@@ -14,6 +14,8 @@ async function ProcessChatText(content, sourceLang, tagretLang) {
             targetLanguage: tagretLang
         }
     });
+    console.log(transcriptMessage)
+    console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
     return transcriptMessage.text
 }
 export default ProcessChatText
