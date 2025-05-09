@@ -192,7 +192,7 @@ const Ccp = () => {
         const connectUrl = process.env.REACT_APP_CONNECT_INSTANCE_URL;
         window.connect.agentApp.initApp(
             "ccp",
-            "ccp-container",
+            "agent-app-container",
             connectUrl + "/connect/ccp-v2/", {
             ccpParams: {
                 region: process.env.REACT_APP_CONNECT_REGION,
@@ -212,7 +212,8 @@ const Ccp = () => {
             <Grid columns='equal' stackable padded>
                 <Grid.Row>
                     {/* CCP window will load here */}
-                    <div id="ccp-container"></div>
+                    {/* <div id="ccp-container"></div> */}
+                    <div id="agent-app-container"></div>
                     {/* Translate window will laod here. We pass the agent state to be able to use this to push messages to CCP */}
                     <div id="chatroom" ><Chatroom session={agentChatSessionState} /> </div>
                 </Grid.Row>
