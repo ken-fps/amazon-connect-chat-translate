@@ -2,7 +2,7 @@ customHeaders:
   - pattern: "**/*"
     headers:
       - key: Content-Security-Policy
-        value: "img-src 'self' data: https: ; style-src 'self' 'unsafe-inline'; object-src 'none' ; script-src 'self' https://*.sdkassets.chime.aws 'wasm-unsafe-eval' ; worker-src 'self' blob: ; child-src 'self' blob: ; frame-src 'self' blob: ; frame-ancestors 'self' https://fps-demo-connect.my.connect.aws https://main.dxsjjqtbt8j3j.amplifyapp.com"
+        value: "default-src * 'unsafe-inline' 'unsafe-eval' data: blob:;"
       - key: X-Frame-Options
         value: ALLOW-FROM "*"
       - key: Access-Control-Allow-Origin
