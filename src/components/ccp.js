@@ -192,8 +192,7 @@ const Ccp = () => {
         const container = document.getElementById('ccp-container');
         if (container) {
             window.connect.agentApp.initCCP(
-                "ccp",
-                "ccp-container",
+                container,
                 connectUrl + "/connect/ccp-v2/", {
                 ccpParams: {
                     region: process.env.REACT_APP_CONNECT_REGION,
