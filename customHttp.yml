@@ -2,7 +2,7 @@ customHeaders:
   - pattern: "**/*"
     headers:
       - key: Content-Security-Policy
-        value: "default-src * 'unsafe-inline' 'unsafe-eval' data: blob:;"
+        value: "default-src 'self';  frame-src https://fps-demo-connect.my.connect.aws; connect-src https://fps-demo-connect.my.connect.aws https://*.amazonaws.com;  script-src 'self' https://fps-demo-connect.my.connect.aws 'unsafe-inline';  style-src 'self' 'unsafe-inline';  img-src 'self' data:;  media-src 'self' blob:;"
       - key: X-Frame-Options
         value: ALLOW-FROM "*"
       - key: Access-Control-Allow-Origin

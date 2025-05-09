@@ -205,7 +205,15 @@ const Ccp = () => {
                 softphone: {
                     allowFramedSoftphone: true,
                 },
-                instanceId: "fps-demo-connect"
+                instanceId: "fps-demo-connect",
+                iframe: {
+                    sandboxPermissions: [
+                        'allow-scripts',
+                        'allow-same-origin',
+                        'allow-forms',
+                        'allow-popups',
+                    ]
+                },
             }
         }
         );
