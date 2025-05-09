@@ -200,16 +200,12 @@ const Ccp = () => {
                     enableAudioDeviceSettings: true, // optional, defaults to 'false'
                     enablePhoneTypeSettings: true // optional, defaults to 'true'
                 },
-                iframe: {
-                    sandboxPermissions: [
-                        'allow-scripts',
-                        'allow-same-origin',
-                        'allow-forms',
-                        'allow-popups',
-                        'allow-popups-to-escape-sandbox',
-                        'allow-presentation'
-                    ]
-                }
+                loginPopup: true,
+                loginPopupAutoClose: true,
+                softphone: {
+                    allowFramedSoftphone: true,
+                },
+                instanceId: "fps-demo-connect"
             }
         }
         );
