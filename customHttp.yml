@@ -1,11 +1,13 @@
 customHeaders:
-  - pattern: '**/*'
+  - pattern: "**/*"
     headers:
-      - key: 'Strict-Transport-Security'
-        value: 'max-age=31536000; includeSubDomains'
-      - key: 'X-Frame-Options'
-        value: 'SAMEORIGIN'
-      - key: 'X-XSS-Protection'
-        value: '1; mode=block'
-      - key: 'X-Content-Type-Options'
-        value: 'nosniff'
+      - key: Content-Security-Policy
+        value: "img-src 'self' data: https: ; style-src 'self' 'unsafe-inline'; object-src 'none' ; script-src 'self' https://*.sdkassets.chime.aws 'wasm-unsafe-eval' ; worker-src 'self' blob: ; child-src 'self' blob: ; frame-src 'self' blob: ; frame-ancestors 'self' http://localhost:5173 https://ccp-popup.s3.us-east-1.amazonaws.com https://fps-demo-connect.my.connect.aws https://main.dxsjjqtbt8j3j.amplifyapp.com"
+      - key: X-Frame-Options
+        value: ALLOW-FROM "*"
+      - key: Access-Control-Allow-Origin
+        value: "*"
+      - key: Access-Control-Allow-Methods
+        value: GET, POST, OPTIONS
+      - key: Access-Control-Allow-Headers
+        value: Content-Type, Authorization
