@@ -190,11 +190,10 @@ const Ccp = () => {
     // *****
     useEffect(() => {
         const connectUrl = process.env.REACT_APP_CONNECT_INSTANCE_URL;
-        window.connect.agentApp.initApp({
-            containerId: 'agent-app-container', // Parent page element ID
-            url: connectUrl + "/connect/ccp-v2/", // CCP endpoint
-            loginPopup: true,
-            loginPopupAutoClose: true,
+        window.connect.agentApp.initApp(
+            "ccp",
+            "agent-app-container",
+            connectUrl + "/connect/ccp-v2/", {
             ccpParams: {
                 region: process.env.REACT_APP_CONNECT_REGION,
                 pageOptions: {                  // optional
@@ -206,6 +205,7 @@ const Ccp = () => {
                 softphone: {
                     allowFramedSoftphone: true,
                 },
+                instanceId: "fps-demo-connect",
                 iframe: {
                     sandboxPermissions: [
                         'allow-scripts',
@@ -215,34 +215,8 @@ const Ccp = () => {
                     ]
                 },
             }
-        })
-        // window.connect.agentApp.initApp(
-        //     "ccp",
-        //     "ccp-container",
-        //     connectUrl + "/connect/ccp-v2/", {
-        //     ccpParams: {
-        //         region: process.env.REACT_APP_CONNECT_REGION,
-        //         pageOptions: {                  // optional
-        //             enableAudioDeviceSettings: true, // optional, defaults to 'false'
-        //             enablePhoneTypeSettings: true // optional, defaults to 'true'
-        //         },
-        //         loginPopup: true,
-        //         loginPopupAutoClose: true,
-        //         softphone: {
-        //             allowFramedSoftphone: true,
-        //         },
-        //         instanceId: "fps-demo-connect",
-        //         iframe: {
-        //             sandboxPermissions: [
-        //                 'allow-scripts',
-        //                 'allow-same-origin',
-        //                 'allow-forms',
-        //                 'allow-popups',
-        //             ]
-        //         },
-        //     }
-        // }
-        // );
+        }
+        );
         subscribeConnectEvents();
     }, []);
 
