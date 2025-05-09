@@ -6,8 +6,10 @@ customHeaders:
       - key: X-Frame-Options
         value: ALLOW-FROM "*"
       - key: Access-Control-Allow-Origin
-        value: "*"
+        value: https://main.dxsjjqtbt8j3j.amplifyapp.com
+      - key: Access-Control-Allow-Credentials
+        value: true
       - key: Access-Control-Allow-Methods
         value: GET, POST, OPTIONS
       - key: Access-Control-Allow-Headers
-        value: Content-Type, Authorization
+        value: Content-Type, Authorization, X-Amz-Date, X-Api-Key, X-Amz-Security-Token
