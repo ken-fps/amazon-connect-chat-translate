@@ -1,5 +1,14 @@
 customHeaders:
   - pattern: "**/*"
     headers:
+      - key: Content-Security-Policy
+        value: frame-ancestors 'self' https://fps-demo-connect.my.connect.aws
+          https://main.dxsjjqtbt8j3j.amplifyapp.com;
       - key: X-Frame-Options
-        value: ALLOW-FROM https://fps-demo-connect.my.connect.aws
+        value: ALLOW-FROM https://main.dxsjjqtbt8j3j.amplifyapp.com https://fps-demo-connect.my.connect.aws
+      - key: Access-Control-Allow-Origin
+        value: "*"
+      - key: Access-Control-Allow-Methods
+        value: GET, POST, OPTIONS
+      - key: Access-Control-Allow-Headers
+        value: Content-Type, Authorization
