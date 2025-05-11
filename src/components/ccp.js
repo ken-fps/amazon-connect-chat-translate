@@ -189,21 +189,34 @@ const Ccp = () => {
     // Loading CCP
     // *****
     useEffect(() => {
-        const connectUrl = process.env.REACT_APP_CONNECT_INSTANCE_URL;
-        window.connect.agentApp.initApp(
-            "ccp",
-            "agent-app-container",
-            connectUrl + "/connect/ccp-v2/", {
-            ccpParams: {
-                region: process.env.REACT_APP_CONNECT_REGION,
-                pageOptions: {                  // optional
-                    enableAudioDeviceSettings: true, // optional, defaults to 'false'
-                    enablePhoneTypeSettings: true // optional, defaults to 'true'
-                }
+        // const connectUrl = process.env.REACT_APP_CONNECT_INSTANCE_URL;
+        // window.connect.agentApp.initApp(
+        //     "ccp",
+        //     "agent-app-container",
+        //     connectUrl + "/connect/ccp-v2/", {
+        //     ccpParams: {
+        //         region: process.env.REACT_APP_CONNECT_REGION,
+        //         pageOptions: {                  // optional
+        //             enableAudioDeviceSettings: true, // optional, defaults to 'false'
+        //             enablePhoneTypeSettings: true // optional, defaults to 'true'
+        //         }
+        //     }
+        // }
+        // );
+        // subscribeConnectEvents();
+        const interval = setInterval(() => {
+            if (window.connect && window.connect.contact) {
+                clearInterval(interval);
+                console.log(contact)
+                window.connect.contact((contact: any) => {
+                    if (contact.getType() === "chat") {
+                        const id = contact.getContactId();
+                        console.log("Detected contactId:", id);
+                        setContactId(id);
+                    }
+                });
             }
-        }
-        );
-        subscribeConnectEvents();
+        }, 500);
     }, []);
 
 
