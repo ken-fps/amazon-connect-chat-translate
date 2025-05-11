@@ -205,10 +205,11 @@ const Ccp = () => {
         // );
         // subscribeConnectEvents();
         const interval = setInterval(() => {
+            console.log(window.connect)
             if (window.connect && window.connect.contact) {
                 clearInterval(interval);
-                console.log(contact)
                 window.connect.contact((contact: any) => {
+                    console.log(contact)
                     if (contact.getType() === "chat") {
                         const id = contact.getContactId();
                         console.log("Detected contactId:", id);
