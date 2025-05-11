@@ -207,9 +207,10 @@ const Ccp = () => {
         const interval = setInterval(() => {
             console.log(window.connect)
             if (window.connect && window.connect.contact) {
-                clearInterval(interval);
+                console.log(window.connect.contact)
                 window.connect.contact((contact: any) => {
                     console.log(contact)
+                    clearInterval(interval);
                     if (contact.getType() === "chat") {
                         const id = contact.getContactId();
                         console.log("Detected contactId:", id);
@@ -218,6 +219,7 @@ const Ccp = () => {
                 });
             }
         }, 500);
+        return () => clearInterval(interval);
     }, []);
 
 
