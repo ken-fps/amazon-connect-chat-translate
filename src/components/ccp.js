@@ -213,7 +213,7 @@ const Ccp = () => {
                     if (contact.getType() === "chat") {
                         const id = contact.getContactId();
                         console.log("Detected contactId:", id);
-                        setContactId(id);
+                        // setContactId(id);
                     }
                 });
             }
