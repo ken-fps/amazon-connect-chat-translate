@@ -189,37 +189,21 @@ const Ccp = () => {
     // Loading CCP
     // *****
     useEffect(() => {
-        // const connectUrl = process.env.REACT_APP_CONNECT_INSTANCE_URL;
-        // window.connect.agentApp.initApp(
-        //     "ccp",
-        //     "agent-app-container",
-        //     connectUrl + "/connect/ccp-v2/", {
-        //     ccpParams: {
-        //         region: process.env.REACT_APP_CONNECT_REGION,
-        //         pageOptions: {                  // optional
-        //             enableAudioDeviceSettings: true, // optional, defaults to 'false'
-        //             enablePhoneTypeSettings: true // optional, defaults to 'true'
-        //         }
-        //     }
-        // }
-        // );
-        // subscribeConnectEvents();
-        const interval = setInterval(() => {
-            console.log(window.connect)
-            if (window.connect && window.connect.contact) {
-                console.log(window.connect.contact)
-                window.connect.contact((contact: any) => {
-                    console.log(contact)
-                    clearInterval(interval);
-                    if (contact.getType() === "chat") {
-                        const id = contact.getContactId();
-                        console.log("Detected contactId:", id);
-                        // setContactId(id);
-                    }
-                });
+        const connectUrl = process.env.REACT_APP_CONNECT_INSTANCE_URL;
+        window.connect.agentApp.initApp(
+            "ccp",
+            "ccp-container",
+            connectUrl + "/connect/ccp-v2/", {
+            ccpParams: {
+                region: process.env.REACT_APP_CONNECT_REGION,
+                pageOptions: {                  // optional
+                    enableAudioDeviceSettings: true, // optional, defaults to 'false'
+                    enablePhoneTypeSettings: true // optional, defaults to 'true'
+                }
             }
-        }, 500);
-        return () => clearInterval(interval);
+        }
+        );
+        subscribeConnectEvents();
     }, []);
 
 
@@ -228,8 +212,7 @@ const Ccp = () => {
             <Grid columns='equal' stackable padded>
                 <Grid.Row>
                     {/* CCP window will load here */}
-                    {/* <div id="ccp-container"></div> */}
-                    <div id="agent-app-container"></div>
+                    <div id="ccp-container"></div>
                     {/* Translate window will laod here. We pass the agent state to be able to use this to push messages to CCP */}
                     <div id="chatroom" ><Chatroom session={agentChatSessionState} /> </div>
                 </Grid.Row>
